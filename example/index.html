@@ -1,4 +1,3 @@
-
 <html>
   <head>
     <title>Example webrtc.io</title>
@@ -22,7 +21,7 @@
     <script>
       var videos = [];
       var rooms = [1,2,3,4,5];
-      var PeerConnection = window.PeerConnection || window.webkitPeerConnection00;
+      var PeerConnection = window.PeerConnection || window.webkitPeerConnection00 || window.webkitRTCPeerConnection;
 
       function getNumPerRow() {
         var len = videos.length;
@@ -157,7 +156,7 @@
           rtc.createStream({"video": true, "audio": true}, function(stream) {
             document.getElementById('you').src = URL.createObjectURL(stream);
             videos.push(document.getElementById('you'));
-            rtc.attachStream(stream, 'you');
+            //rtc.attachStream(stream, 'you');
             subdivideVideos();
           });
         }else {
